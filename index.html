@@ -301,25 +301,50 @@
     </div>
 
     <script>
-        // Special manual overrides for specific dates (format: "YYYY-MM-DD")
-        const manualOverrides = {
-            // "2026-10-16": {
-            //     dayType: "Friday",
-            //     slots: [
-            //         { title: "Quote of the Day", names: "Special Student A & Special Student B", gradeText: "Grade 6" },
-            //         { title: "Speciality of the Day", names: "Special Student C & Special Student D", gradeText: "Grade 8" },
-            //         { title: "Rahal News Programme", names: "Special Student E & Special Student F", gradeText: "Grade 10" }
-            //     ]
-            // }
-        };
+        // Special manual overrides for specific dates if needed
+        const manualOverrides = {};
 
+        // Clean, verified student pools separated by role and grade (Grade 11 completely removed)
         const pool = {
-            g6_prog: ["M. Senula Lohas", "B.U. Lendu Denuwan", "Lasindu Denuwan", "H T Sawen Randull Yometh", "Newch Vilupa Rutasinghe", "Lathita Hasath Rathiniryaka", "Gesandu Nimsuka", "Sehas Dinharu Wijerathna", "H.K. Yahan Bas", "Erandi Kannangara", "Kaweesh Snehin Runage", "Rashil Nandinu Wickramasinghe de", "Desindu Ronal Amarasi Guna", "Sehinsa Chettuhas Kankanam Pathi", "Gan Hewage Mihuja Sasdimu Wickh", "EDIRISINHE ARACHCHIGE INDUN"],
-            g7_prog: ["P. A. Menupa Thinath Randira", "P.M. Ham Sandul", "Hesandu Sasith Godawelage", "P.G Masendu Sethruta", "K.A. Sanuth Nethmira Hettiarachvi", "Nehuja Damsa", "S.Sanuth Dumith Samarasingha", "A.G.A.T Nimaada", "Hithesina Nirmith Wickramaratne", "Ometh Cheriru Sedarshetti", "Induwara Udan"],
-            g8_prog: ["Tharul Damnada Gunasekara", "INAL SANISHTHA HEWAVIDANA", "Hasat Dinadith Perera", "Janiru Ninduwara Weragoda Arachchi", "Vidana Gamage Sinura Sasvidu", "KH. Chathum Dinethh", "Setath Abayasinghe", "Nirmitha Sesath De Silva"],
-            g9_prog: ["Dethura Mahisara Randonbage", "Dihein Sarvidu", "BK Sandil Sandira Scottyarachchi", "Sethindu Dissanayake", "Shanuka Seygan Adithya Bandara", "Sedul Dimara Kodithuwakku", "S.T.M Dissanayake", "Semuka Nethsanda Kodithuwakku", "A.G.Shashidu Ashish", "Damsara Neththikumara", "Hirat Randilu Wijesara Dissanay"],
-            g9_news: ["Vinuka Theshan Ranawaka", "Sethindu Dissanayake", "Shanuka Seygan Adithya Bandara", "Sedul Dimara Kodithuwakku", "S.T.M Dissanayake", "Semuka Nethsanda Kodithuwakku", "A.G.Shashidu Ashish", "Damsara Neththikumara", "Hirat Randilu Wijesara Dissanay"],
-            g10_all: ["Isija Anusara", "Yasiru Sithijaya Ranasinghe", "Disinu Chandul", "Junal Basnayake", "Buddhi Mahendra"]
+            // Grade 6 (Program Presenters / Both)
+            g6_prog: [
+                "M. Senulus Lohas", "B.U. Lendu Denuwan", "Lasindu Denuwan", 
+                "H T Sawen Randull Yometh", "Newch Vilupa Rutasinghe", "Lathita Hasath Rathiniryaka", 
+                "Gesandu Nimsuka", "Sehas Dinharu Wijerathna", "H.K. Yahan Bas", 
+                "Erandi Kannangara", "Kaweesh Snehin Runage", "Rashil Nandinu Wickramasinghe de", 
+                "Desindu Ronal Amarasi Guna", "Sehinsa Chettuhas Kankanam Pathi", 
+                "Gan Hewage Mihuja Sasdimu Wickh", "EDIRISINHE ARACHCHIGE INDUN"
+            ],
+            // Grade 7 (Program Presenters / Both)
+            g7_prog: [
+                "P. A. Menupa Thinath Randira", "P.M. Ham Sandul", "Hesandu Sasith Godawelage", 
+                "P.G Masendu Sethruta", "K.A. Sanuth Nethmira Hettiarachvi", "S.Sanuth Dumith Samarasingha", 
+                "A.G.A.T Nimaada", "Hithesina Nirmith Wickramaratne", "Ometh Cheriru Sedarshetti", 
+                "Induwara Udan"
+            ],
+            // Grade 8 (Program Presenters / Both)
+            g8_prog: [
+                "Tharul Damnada Gunasekara", "INAL SANISHTHA HEWAVIDANA", "Hasat Dinadith Perera", 
+                "Janiru Ninduwara Weragoda Arachchi", "Vidana Gamage Sinura Sasvidu", 
+                "KH. Chathum Dinethh", "Setath Abayasinghe", "Isath Arshana Wickramasinghe"
+            ],
+            // Grade 9 Program Presenters
+            g9_prog: [
+                "Sethindu Dissanayake", "Shanuka Seygan Adithya Bandara", "Sedul Dimara Kodithuwakku", 
+                "S.T.M Dissanayake", "A.G.Shashidu Ashish", "Damsara Neththikumara", "Chaniru Ranmeth"
+            ],
+            // Grade 9 News Presenters
+            g9_news: [
+                "Sethindu Dissanayake", "Shanuka Seygan Adithya Bandara", "Sedul Dimara Kodithuwakku", 
+                "S.T.M Dissanayake", "A.G.Shashidu Ashish", "Damsara Neththikumara", "Chaniru Ranmeth"
+            ],
+            // Grade 10 All Roles (Isija, Yasiru, Disinu, Danindu)
+            g10_prog: [
+                "Isija Anusara", "Yasiru Sithijaya Ranasinghe", "Disinu Chandul", "Danindu"
+            ],
+            g10_news: [
+                "Isija Anusara", "Yasiru Sithijaya Ranasinghe", "Disinu Chandul", "Danindu"
+            ]
         };
 
         function getPair(list, index) {
@@ -340,14 +365,14 @@
                 poolKey = (grade === 8) ? 'g8_prog' : 'g9_prog';
             } else if (type === 'song') {
                 if (grade === 8) poolKey = 'g8_prog';
-                if (grade === 9) poolKey = 'g9_prog';
-                if (grade === 10) poolKey = 'g10_all';
+                else if (grade === 9) poolKey = 'g9_prog';
+                else if (grade === 10) poolKey = 'g10_prog';
             } else if (type === 'news') {
                 if (grade === 9) poolKey = 'g9_news';
-                if (grade === 10) poolKey = 'g10_all';
+                else if (grade === 10) poolKey = 'g10_news';
             }
 
-            let list = pool[poolKey] || pool.g10_all;
+            let list = pool[poolKey] || pool.g6_prog;
             let currentIdx = counters[poolKey];
 
             const pair = getPair(list, currentIdx);
@@ -360,13 +385,15 @@
             let days = [];
             let curr = new Date(2026, 9, 16, 7, 50, 0);
 
+            // Independent counters for every pool to ensure smooth sequential looping
             let counters = {
                 g6_prog: 0,
                 g7_prog: 0,
                 g8_prog: 0,
                 g9_prog: 0,
                 g9_news: 0,
-                g10_all: 0
+                g10_prog: 0,
+                g10_news: 0
             };
 
             for (let i = 0; i < 150; i++) {
@@ -384,6 +411,11 @@
 
                     let qotdData = resolveAndAdvance('qotd', qotdGrade, counters);
                     let specData = resolveAndAdvance('spec', specGrade, counters);
+                    
+                    // Collision guard if same grade pool is pulled twice on the same day
+                    if (specGrade === newsGrade) {
+                        counters['g9_news'] = (counters['g9_news'] + 1) % pool['g9_news'].length;
+                    }
                     let newsData = resolveAndAdvance('news', newsGrade, counters);
 
                     days.push({
@@ -403,16 +435,16 @@
 
                     let qotdData = resolveAndAdvance('qotd', qotdGrade, counters);
                     
-                    let specData, songData;
-                    if (specGrade === 9 && songGrade === 9) {
-                        specData = resolveAndAdvance('spec', specGrade, counters);
-                        // Skip one index so song doesn't share a student with speciality on the same day
-                        counters['g9_prog'] = (counters['g9_prog'] + 1) % pool.g9_prog.length;
-                        songData = resolveAndAdvance('song', songGrade, counters);
-                    } else {
-                        specData = resolveAndAdvance('spec', specGrade, counters);
-                        songData = resolveAndAdvance('song', songGrade, counters);
+                    if (qotdGrade === specGrade) {
+                        counters[specGrade === 8 ? 'g8_prog' : 'g9_prog'] = (counters[specGrade === 8 ? 'g8_prog' : 'g9_prog'] + 1) % pool[specGrade === 8 ? 'g8_prog' : 'g9_prog'].length;
                     }
+                    let specData = resolveAndAdvance('spec', specGrade, counters);
+
+                    if (specGrade === songGrade) {
+                        let songPoolKey = songGrade === 8 ? 'g8_prog' : songGrade === 9 ? 'g9_prog' : 'g10_prog';
+                        counters[songPoolKey] = (counters[songPoolKey] + 1) % pool[songPoolKey].length;
+                    }
+                    let songData = resolveAndAdvance('song', songGrade, counters);
 
                     days.push({
                         dateKey: dateStr,
@@ -436,15 +468,6 @@
         }
 
         function buildSessionContent(session) {
-            if (manualOverrides[session.dateKey]) {
-                const override = manualOverrides[session.dateKey];
-                let html = '';
-                override.slots.forEach(slot => {
-                    html += `<div class="slot-item"><div class="slot-title">${slot.title}</div><div class="slot-names">${slot.names}<span class="slot-grade">${slot.gradeText}</span></div></div>`;
-                });
-                return html;
-            }
-
             let html = '';
             session.slots.forEach(slot => {
                 html += `<div class="slot-item"><div class="slot-title">${slot.title}</div><div class="slot-names">${slot.names}<span class="slot-grade">${slot.gradeText}</span></div></div>`;
@@ -478,10 +501,7 @@
             if (activeIndex >= schedule.length) activeIndex = schedule.length - 1;
 
             const targetSession = schedule[activeIndex];
-            const override = manualOverrides[targetSession.dateKey];
-            const displayDayType = override ? override.dayType : targetSession.dayType;
-
-            document.getElementById('session-title').innerHTML = `🌟 ${displayDayType} Broadcast`;
+            document.getElementById('session-title').innerHTML = `🌟 ${targetSession.dayType} Broadcast`;
             document.getElementById('session-date').innerText = targetSession.displayDate;
             document.getElementById('session-slots').innerHTML = buildSessionContent(targetSession);
         }
