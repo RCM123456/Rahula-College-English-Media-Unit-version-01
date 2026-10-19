@@ -301,44 +301,37 @@
     </div>
 
     <script>
-        // Special manual overrides for specific dates if needed
         const manualOverrides = {};
 
-        // Clean, verified student pools separated by role and grade (Grade 11 completely removed)
+        // 100% Cleaned Pools (Grades 6-10 only. Grade 11 and Dihein completely removed)
         const pool = {
-            // Grade 6 (Program Presenters / Both)
             g6_prog: [
-                "M. Senulus Lohas", "B.U. Lendu Denuwan", "Lasindu Denuwan", 
+                "M. Senula Lohas", "B.U. Lendu Denuwan", "Lasindu Denuwan", 
                 "H T Sawen Randull Yometh", "Newch Vilupa Rutasinghe", "Lathita Hasath Rathiniryaka", 
                 "Gesandu Nimsuka", "Sehas Dinharu Wijerathna", "H.K. Yahan Bas", 
                 "Erandi Kannangara", "Kaweesh Snehin Runage", "Rashil Nandinu Wickramasinghe de", 
                 "Desindu Ronal Amarasi Guna", "Sehinsa Chettuhas Kankanam Pathi", 
                 "Gan Hewage Mihuja Sasdimu Wickh", "EDIRISINHE ARACHCHIGE INDUN"
             ],
-            // Grade 7 (Program Presenters / Both)
             g7_prog: [
                 "P. A. Menupa Thinath Randira", "P.M. Ham Sandul", "Hesandu Sasith Godawelage", 
                 "P.G Masendu Sethruta", "K.A. Sanuth Nethmira Hettiarachvi", "S.Sanuth Dumith Samarasingha", 
                 "A.G.A.T Nimaada", "Hithesina Nirmith Wickramaratne", "Ometh Cheriru Sedarshetti", 
                 "Induwara Udan"
             ],
-            // Grade 8 (Program Presenters / Both)
             g8_prog: [
                 "Tharul Damnada Gunasekara", "INAL SANISHTHA HEWAVIDANA", "Hasat Dinadith Perera", 
                 "Janiru Ninduwara Weragoda Arachchi", "Vidana Gamage Sinura Sasvidu", 
                 "KH. Chathum Dinethh", "Setath Abayasinghe", "Isath Arshana Wickramasinghe"
             ],
-            // Grade 9 Program Presenters
             g9_prog: [
                 "Sethindu Dissanayake", "Shanuka Seygan Adithya Bandara", "Sedul Dimara Kodithuwakku", 
                 "S.T.M Dissanayake", "A.G.Shashidu Ashish", "Damsara Neththikumara", "Chaniru Ranmeth"
             ],
-            // Grade 9 News Presenters
             g9_news: [
                 "Sethindu Dissanayake", "Shanuka Seygan Adithya Bandara", "Sedul Dimara Kodithuwakku", 
                 "S.T.M Dissanayake", "A.G.Shashidu Ashish", "Damsara Neththikumara", "Chaniru Ranmeth"
             ],
-            // Grade 10 All Roles (Isija, Yasiru, Disinu, Danindu)
             g10_prog: [
                 "Isija Anusara", "Yasiru Sithijaya Ranasinghe", "Disinu Chandul", "Danindu"
             ],
@@ -385,7 +378,6 @@
             let days = [];
             let curr = new Date(2026, 9, 16, 7, 50, 0);
 
-            // Independent counters for every pool to ensure smooth sequential looping
             let counters = {
                 g6_prog: 0,
                 g7_prog: 0,
@@ -412,7 +404,6 @@
                     let qotdData = resolveAndAdvance('qotd', qotdGrade, counters);
                     let specData = resolveAndAdvance('spec', specGrade, counters);
                     
-                    // Collision guard if same grade pool is pulled twice on the same day
                     if (specGrade === newsGrade) {
                         counters['g9_news'] = (counters['g9_news'] + 1) % pool['g9_news'].length;
                     }
